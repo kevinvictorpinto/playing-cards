@@ -1,0 +1,20 @@
+version '1.0.0'
+
+project.sourceCompatibility = JavaVersion.VERSION_1_8
+project.targetCompatibility = JavaVersion.VERSION_1_8
+
+repositories {
+	mavenCentral()
+}
+
+configurations.all {
+	resolutionStrategy {
+		failOnVersionConflict()
+	}
+}
+
+dependencies {
+	compile project(':playing-cards-impl')
+}
+
+

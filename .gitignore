@@ -1,0 +1,12 @@
+
+*.iml
+
+.idea/
+
+playing-cards-api/out/
+
+playing-cards-console-app/out/
+
+.gradle/
+
+playing-cards-impl/out/
