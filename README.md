@@ -22,7 +22,7 @@ playing-cards git repo to share code base for Deck of Cards problem.
 
 ### Notes
  * Unless specified explicitly in requirements I tend to write minimal code comments/ java doc.
-    * I write java doc for interface so that it's purpose is well defined.
+    * I wrote java docs for interface so that it's purpose is well defined.
     * I believe comments should describe the 'why' and not the 'what' since simple code should be able to describe the 'what'.
  * Future enhancement
     * I would make implementation in console app configurable via a properties file.
