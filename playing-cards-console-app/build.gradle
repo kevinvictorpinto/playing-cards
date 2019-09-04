@@ -18,3 +18,12 @@ dependencies {
 }
 
 
+jar {
+	manifest {
+		attributes 'Main-Class': 'pinto.kevin.playing.cards.app.ConsoleApp'
+	}
+
+	from {
+		configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+	}
+}

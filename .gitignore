@@ -1,12 +1,15 @@
-
-*.iml
-
-.idea/
-
-playing-cards-api/out/
-
-playing-cards-console-app/out/
-
 .gradle/
 
+playing-cards-api/build/
+playing-cards-console-app/build/
+playing-cards-impl/build/
+
+playing-cards-api/out/
+playing-cards-console-app/out/
 playing-cards-impl/out/
+
+*.iml
+.idea/
+
+
+

@@ -15,7 +15,7 @@ public class FiftyTwoDeckOfCards implements DeckOfCards {
 
     public FiftyTwoDeckOfCards(List<PlayingCard> cards) {
         this.cards = new LinkedList<>();
-        this.shuffler = new SimpleShuffler<>();
+        setShuffler(new SimpleShuffler<>());
 
         for(PlayingCard card : cards) {
             this.cards.push(card);
@@ -23,7 +23,7 @@ public class FiftyTwoDeckOfCards implements DeckOfCards {
     }
 
     @Override
-    public PlayingCard deal() throws DeckOfCardsEmptyException {
+    public PlayingCard dealOneCard() throws DeckOfCardsEmptyException {
         if(this.cards.size() <= 0) {
             throw new DeckOfCardsEmptyException();
         }

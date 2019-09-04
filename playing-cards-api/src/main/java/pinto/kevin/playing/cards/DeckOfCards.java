@@ -13,7 +13,7 @@ public interface DeckOfCards {
      * @return {@link PlayingCard}
      * @throws DeckOfCardsEmptyException
      */
-    PlayingCard deal() throws DeckOfCardsEmptyException;
+    PlayingCard dealOneCard() throws DeckOfCardsEmptyException;
 
     /**
      * Shuffle the deck of card.

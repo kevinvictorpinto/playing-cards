@@ -14,6 +14,8 @@ import java.util.List;
  */
 public class FiftyTwoDeckPlayingCardFactory implements PlayingCardFactory {
 
+    public enum CardNameTypes { ACE, KING, QUEEN, JACK, NUMBER }
+
     private List<PlayingCardType> cardTypes;
 
     public FiftyTwoDeckPlayingCardFactory() {
@@ -29,24 +31,24 @@ public class FiftyTwoDeckPlayingCardFactory implements PlayingCardFactory {
         List<PlayingCard> cards = new ArrayList<>();
 
         for(PlayingCardType cardType : this.cardTypes) {
-            for(CardName cardName : CardName.values()) {
-                switch (cardName) {
-                    case ACE:
-                        cards.add(new SimplePlayingCard(cardName.name(), cardType, 11));
-                        break;
-                    case KING:
-                        cards.add(new SimplePlayingCard(cardName.name(), cardType, 10));
-                        break;
-                    case QUEEN:
-                        cards.add(new SimplePlayingCard(cardName.name(), cardType, 10));
-                        break;
-                    case JACK:
-                        cards.add(new SimplePlayingCard(cardName.name(), cardType, 10));
-                        break;
+            for(CardNameTypes cardNameType : CardNameTypes.values()) {
+                switch (cardNameType) {
                     case NUMBER:
                         for(int i=2; i<=10; i++) {
                             cards.add(new SimplePlayingCard(i+"", cardType, i));
                         }
+                        break;
+                    case ACE:
+                        cards.add(new SimplePlayingCard(cardNameType.name(), cardType, 11));
+                        break;
+                    case KING:
+                    case QUEEN:
+                    case JACK:
+                        cards.add(new SimplePlayingCard(cardNameType.name(), cardType, 10));
+                        break;
+                    default:
+                        throw new UnsupportedOperationException(cardNameType + " handling has not been implemented.");
+
                 }
             }
         }

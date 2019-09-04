@@ -12,14 +12,13 @@ import java.util.Scanner;
 public class ConsoleApp {
 
     public static void showCard(PlayingCard card) {
-        System.out.println(card.getName() + " of " +
-                card.getCardType().getTypeName() +
-                ", color " + card.getColor() +
-                ", value " + card.getNumericValue());
+        System.out.println(card +
+                ", color: " + card.getColor() +
+                ", value: " + card.getNumericValue());
     }
 
     public static void printHelp() {
-        System.out.println("You may choose following options: ");
+        System.out.println("Please choose one of the following options: ");
         System.out.println("1 - Deal");
         System.out.println("2 - Shuffle");
         System.out.println("3 - Reset");
@@ -27,9 +26,7 @@ public class ConsoleApp {
         System.out.println("0 - Exit program");
     }
 
-    public static void main(String[] args) {
-
-        PlayingCardFactory factory = new FiftyTwoDeckPlayingCardFactory();
+    public static int run(PlayingCardFactory factory) {
         DeckOfCards deck = factory.getDeckOfCards();
 
         System.out.println("Welcome to simple 52 deck card dealing app.");
@@ -47,7 +44,6 @@ public class ConsoleApp {
                     System.out.println();
                 } catch (NumberFormatException e) {
                     System.out.println("You may only enter an integer choice.");
-                    printHelp();
                     continue;
                 }
 
@@ -56,10 +52,9 @@ public class ConsoleApp {
                         System.out.println("Exiting application.");
                         break;
                     case 1:
-                        System.out.println("Deal requested");
+                        System.out.print("Deal requested: ");
                         try {
-                            PlayingCard card = deck.deal();
-                            System.out.println("Card deal:");
+                            PlayingCard card = deck.dealOneCard();
                             showCard(card);
                         } catch (DeckOfCardsEmptyException e) {
                             System.out.println("Deck is empty. Nothing to deal.");
@@ -75,14 +70,19 @@ public class ConsoleApp {
                         break;
                     case 4:
                         System.out.println("Showing cards: ");
+                        int count = 0;
                         Iterator<PlayingCard> iterator = deck.getIterator();
                         while(iterator.hasNext()) {
                             showCard(iterator.next());
+                            count++;
                         }
+
+                        System.out.println();
+                        System.out.println("Displayed " + count + " cards.");
+
                         break;
                     default:
                         System.out.println("Invalid option.");
-                        printHelp();
 
                 }
 
@@ -90,5 +90,13 @@ public class ConsoleApp {
 
         }
 
+        return 0;
+    }
+
+    public static void main(String[] args) {
+
+        PlayingCardFactory factory = new FiftyTwoDeckPlayingCardFactory();
+
+        System.exit(run(factory));
     }
 }
