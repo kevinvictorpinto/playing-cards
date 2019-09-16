@@ -6,19 +6,32 @@ playing-cards git repo to share code base for Deck of Cards problem.
  * playing-cards-console-app
 
 ### Required
- * JDK 1.8 or higher
- * JAVA_HOME configured environment variable
- * Gradle 2.14 or above (optional)
- * IntelliJ IDE (optional)
+ * On windows or linux local box 
+    * JDK 1.8 or higher
+    * JAVA_HOME configured environment variable
+    * Gradle 2.14 or above (optional)
+    * IntelliJ IDE (optional)
+ * Or via docker
 
 ### Build and Play
  * Navigate into directory where this git repo was cloned.
- * Build:
-    * On Linux: ./gradlew build
-    * On Windows: gradlew.bat build
- * Play:
-    * On Linux: java -jar playing-cards-console-app/build/libs/playing-cards-console-app-1.0.0.jar
-    * On Windows: java -jar playing-cards-console-app\build\libs\playing-cards-console-app-1.0.0.jar
+ * Local
+    * Build:
+      * On Linux: ./gradlew build
+      * On Windows: gradlew.bat build
+    * Play:
+      * On Linux: java -jar playing-cards-console-app/build/libs/playing-cards-console-app-1.0.0.jar
+      * On Windows: java -jar playing-cards-console-app\build\libs\playing-cards-console-app-1.0.0.jar
+ * Docker
+    * Build: docker build -t <image_name> .
+      * example: docker build -t playing_cards .
+    * Play: docker run -i -t <image_name>
+      * example: docker run -i -t playing_cards
+    * Interact: docker run -it --entrypoint /bin/bash <image_name>
+      * example: docker run -it --entrypoint /bin/bash playing_cards
+      * examples to run in container:
+        * gradle clean
+        * gradle test -i 
 
 ### Notes
  * Unless specified explicitly in requirements I tend to write minimal code comments/ java doc.
@@ -37,7 +50,7 @@ playing-cards git repo to share code base for Deck of Cards problem.
 	* Gradle can auto create Intellij IDE files.
 
 
-### Configuration Steps
+### Misc Details
 
  1. Building your project artifact from terminal/ cmd.
 	* Navigate to this git repo via terminal or cmd and execute command example: gradlew.bat build
